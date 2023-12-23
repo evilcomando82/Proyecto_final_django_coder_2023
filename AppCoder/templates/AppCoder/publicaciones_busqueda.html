@@ -1,0 +1,16 @@
+{% extends 'AppCoder/padre.html' %}
+		
+
+			{%  block context  %}
+
+			<body>
+				<h2>Buscar por título</h2>
+			    <form action="{% url 'publicaciones_busqueda' %}" method="POST" class="mt-3">     
+				{% csrf_token %}				      
+				{{ form.as_p }}	
+				<input type="submit" value="buscar" class="btn btn-primary mb-2">
+			    </form>
+			</body>				
+	 
+
+			{%  endblock  %}

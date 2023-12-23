@@ -1,0 +1,54 @@
+
+{% include 'AppCoder/navbar.html' %}
+
+        <div class="text-center">
+          
+        {% block title %}
+        
+        {% endblock %}
+        </div>
+
+        <div class="text-center">
+             
+        {% block context %}
+            
+       
+        {% endblock %}
+        
+        </div>
+
+   
+    
+
+
+
+
+   
+        {% include 'AppCoder/footer.html' %}
+   
+           
+
+      
+
+    </body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        // Abre el modal 'loginModal' al cargar la página
+        $('#loginModal').modal('show');
+
+        // Opcional: Abre el modal 'loginModal' al hacer clic en el enlace
+        $('a[data-target="#loginModal"]').click(function () {
+            $('#loginModal').modal('show');
+        });
+
+        // Abre el modal 'signupModal' al cargar la página
+        $('#signupModal').modal('show');
+
+        // Opcional: Abre el modal 'signupModal' al hacer clic en el enlace
+        $('a[data-target="#signupModal"]').click(function () {
+            $('#signupModal').modal('show');
+        });
+    });
+</script>

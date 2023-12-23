@@ -1,0 +1,22 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block context %}
+   
+
+    <div class="centered-container">
+        {{ nombre }}
+        <div class="alert alert-danger">
+            <h2>Borrar: {{publicacion.titulo}}</h2>
+            <p>¿Estás seguro de que deseas borrar la publicación: <strong>{{publicacion.titulo}}</strong> - fecha: <strong>{{ publicacion.fecha }}</strong>?</p>
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            <input type="submit" value="Sí, eliminar" class="btn btn-danger mb-2"/>
+            
+            <a href="{% url 'publicaciones_list' %}" class="btn btn-primary mb-2" >No, cancelar</a>
+        </form>
+    </div>
+{% endblock %}
+
+ 

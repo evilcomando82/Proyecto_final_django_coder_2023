@@ -1,0 +1,26 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block context%}
+ 
+ <div >
+    <img class="mt-2" src="{{ avatar_url }}" style="height: 70px; width: auto; border-radius: 50%; vertical-align: middle;"/>
+    <h2 class="mb-4">Editar usuario: {{ usuario }}</h2>
+    
+
+    <div >
+        <form action="{% url 'editar_perfil' %}" method="POST">
+
+            <div class="form-group col-md-12">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+        <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-primary">Editar</button>
+
+            
+        </div>
+        </form>
+    </div>
+    
+</div>
+{% endblock%}

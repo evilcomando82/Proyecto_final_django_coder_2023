@@ -1,0 +1,200 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+  
+<head>
+  <meta charset="utf-8">
+  <title>Blog educacional</title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{% static '/AppCoder/plugins/bootstrap/bootstrap.min.css' %}">
+  <!-- slick slider -->
+  <link rel="stylesheet" href=" {% static '/AppCoder/plugins/slick/slick.css' %}">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="{% static '/AppCoder/plugins/themify-icons/themify-icons.css' %}">
+  <!-- animation css -->
+  <link rel="stylesheet" href="{% static '/AppCoder/plugins/animate/animate.css' %}">
+  <!-- aos -->
+  <link rel="stylesheet" href="{% static '/AppCoder/plugins/aos/aos.css' %}">
+  <!-- venobox popup -->
+  <link rel="stylesheet" href=" {% static '/AppCoder/plugins/venobox/venobox.css' %}">
+  {% static '/AppCoder/css/style.css' %}
+  <!-- Main Stylesheet -->
+  <link href="{% static '/AppCoder/css/style.css' %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static '/AppCoder/images/favicon.ico' %}" type="image/x-icon">
+  <link rel="icon" href="{% static '/AppCoder/images/favicon.ico' %}" type="image/x-icon">
+ 
+</head>
+
+<body>
+  
+
+<!-- header -->
+<header class="fixed-top header">
+  <!-- top header -->
+  <div class="top-header py-2 bg-white">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-4 text-center text-lg-left">
+          <a class="text-color mr-3" href="callto:+443003030266"><strong>Telefono</strong> +56 32 250 9369</a>
+          <ul class="list-inline d-inline">
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-linkedin"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-8 text-center text-lg-right">
+          <ul class="list-inline">
+           
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- navbar -->
+  <div class="navigation w-100">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light p-0">
+ 
+
+        <a class="navbar-brand" href="{% url 'inicio' %}"><img src="{% static '/AppCoder/images/logo.png' %}" alt="logo"></a>
+        
+
+        <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+              
+              <a class="nav-link" href="{% url 'inicio' %}">Home</a>
+     
+              
+              
+
+            </li>
+       
+         
+            <li class="nav-item dropdown view">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Publicaciones
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 
+                <a class="dropdown-item" href="{% url 'publicaciones_create' %}">Crear</a>
+                
+                <a class="dropdown-item" href="{% url 'publicaciones_busqueda' %}">Buscar (sin login)</a>
+
+                <a class="dropdown-item" href="{% url 'publicaciones_list' %}">Administrar</a>
+               
+        
+
+
+              </div>
+              {% if user.is_authenticated %}
+              
+              <li class="nav-item @@events">
+                <a class="nav-link" href="{% url 'editar_perfil' %}">Editar perfil {{ user.username }}</a>
+                
+   
+            
+              </li>
+              <li class="nav-item @@events">
+                <a class="nav-link" href="{% url 'logout' %}">Logout {{ user.username }}</a>
+                   
+            
+              </li>
+
+              
+
+            
+
+            <!-- <a class="navbar-brand" href="{#% url 'AppCoder:logout' %#}">Logout</a> -->
+          {% else %}
+
+   
+          <li class="nav-item @@events">
+            <a class="nav-link" href="{% url 'loguear' %}" data-target="#loginModal">Loguear</a>
+          </li>
+         
+
+          
+
+          <li class="nav-item @@events">
+            <a class="nav-link" href="{% url 'registrar' %}" data-target="#signupModal">Registrarse</a>
+          </li>
+
+          <li class="nav-item @@events">
+            <a class="nav-link" href="{% url 'about' %}">acerca de nosotros</a>
+          </li>
+            
+          {% endif %}
+
+            </li>
+       
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- /header -->
+
+
+
+
+
+
+
+{% static '/AppCoder/images/banner/banner-1.jpg' %}
+<!-- hero slider -->
+<section class="hero-section overlay bg-cover" data-background="{% static '/AppCoder/images/banner/banner-1.jpg' %}">
+  <div class="container">
+    <div class="hero-slider">
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1">Estamos comprometidos</h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4">Blog educacional para compartir información de la facultad</p>
+            
+           <!-- <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Apply now</a>-->
+          </div>
+        </div>
+      </div>
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Bienvenidos</h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">Alumnos a nuestra aplicación pensada en ustedes</p>
+       <!--     <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".7">Apply now</a>-->
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</section>
+<!-- /hero slider -->
+
+
+ 
+
+                
+         
+ 

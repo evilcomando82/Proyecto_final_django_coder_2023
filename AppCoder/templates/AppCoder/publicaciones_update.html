@@ -1,0 +1,17 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block context %}
+
+
+<div class="form-container">
+    <h2>Editar Curso</h2>
+    <form action="{% url 'publicaciones_update' publicacion.pk %}" method="POST">
+        {% csrf_token %}
+        <div class="form-field">
+            {{ form.as_p }}
+        </div>
+        <input type="submit" class="btn btn-primary mb-2" value="Editar">
+    </form>
+</div>
+
+{% endblock %}

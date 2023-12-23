@@ -1,0 +1,69 @@
+{% extends 'AppCoder/padre.html' %}
+
+{% block context %}
+
+<body>
+    <div class="container">
+        <h4 class="title">Lista de publicaciones</h4>
+        {% if user.is_authenticated %}  
+    
+        <button class="btn btn-success">
+            <a href="{% url 'publicaciones_create'%}" class="btn-link text-white">Nueva publicación</a>
+        </button>
+
+        {% endif %}
+        <br><br>
+        <div>
+            
+
+                    {% if publicaciones.count == 0 %}
+                       <div class="alert alert-danger">
+                         <h4>No se encuentran registros en la busqueda</h4>
+                       </div>
+                    {% else %}
+                    <table class="table  table-md">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    {% for publicacion in publicaciones %}
+                    <tr>
+                        <td>{{ publicacion.titulo }}</td>
+                        <td>{{ publicacion.autor }}</td>
+                        <td>{{ publicacion.fecha }}</td>
+                        <td>
+                            {% if user.is_authenticated %}  
+                            <button class="btn btn-primary text-white">
+                                <a class=" text-white" href="{% url 'publicaciones_update' publicacion.pk %}" >Editar</a>
+                            </button>
+                            <button class="btn btn-primary"  >
+                                <a class=" text-white" href="{% url 'publicaciones_delete' publicacion.pk %}" >Eliminar</a>
+                            </button>
+                            {% endif %}
+
+                            <button class="btn btn-primary" >
+                                <a class=" text-white" href="{% url 'publicaciones_detail' publicacion.pk %}" >Ver</a>
+                            </button>
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+                    {% endif %}
+                    
+                
+        </div>
+    </div>
+ 
+</body>
+ 
+
+
+{% endblock %}
+

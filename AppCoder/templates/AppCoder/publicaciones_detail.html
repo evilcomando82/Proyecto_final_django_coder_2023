@@ -1,0 +1,86 @@
+{% extends 'AppCoder/padre.html' %}
+{% load crispy_forms_tags}
+
+{% block context %}
+
+
+<div class="centered-container">
+
+</div>
+
+
+   
+
+
+
+<section class="section-sm bg-gray">
+
+<div class="col-12 mb-4">
+    <img src="../../{{ publicacion.imagen }}" alt="blog-thumb" width="30%" />
+   
+  </div>
+  <div class="col-12">
+    <ul class="list-inline">
+      <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">Post:</span>{{ publicacion.autor }}</li>
+      <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light">{{ publicacion.fecha }}</li>
+      
+    </ul>
+  </div>
+  <!-- border -->
+  <div class="col-12 mt-4">
+    <div class="border-bottom border-primary"></div>
+  </div>
+
+
+      <!-- blog contect -->
+      <div class="col-12 mb-5">
+        <h2>{{ publicacion.titulo }}</h2>
+        <h3>{{ publicacion.subtitulo }}</h3>
+        <p>{{ publicacion.contenido }}</p>
+       
+      </div>
+      <!-- comment box -->
+      <div class="col-12">
+        <form method="POST" class="row">
+              
+          <div class="col-12">
+            {% if user.is_authenticated %}  
+                {% csrf_token %}
+                {{form.as_p}}
+
+             
+          </div>
+          
+          <div class="col-12">
+            <button type="submit" value="send" class="btn btn-primary">agregar comentario</button>
+          </div>
+          {% else %}
+          <h2>no puedes comentar por que debes loguearte primero</h2>
+
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /blog details -->
+ 
+
+
+{% for opinion in publicacion.opinion_set.all %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <p class="card-text">{{ opinion.texto }}</p>
+      <p class="card-subtitle text-muted">Comentado por: {{ opinion.autor.username }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+
+
+
+{% endblock %}
+
+
+
+

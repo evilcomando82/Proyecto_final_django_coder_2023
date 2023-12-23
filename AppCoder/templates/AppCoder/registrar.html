@@ -1,0 +1,134 @@
+{% extends "AppCoder/padre.html" %}
+
+{% block title %}
+   
+{% endblock %}
+
+{% block context %}
+ 
+    <style>
+        .error-list {
+            color: red;
+        }
+    </style>
+ 
+<body>
+
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content rounded-0 border-0 p-4">
+            <div class="modal-header border-0">
+                <h3>Registrarse</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'registrar' %}" method="POST">
+                    {% csrf_token %}
+                    <form action="{% url 'registrar' %}" method="POST">
+                        {% csrf_token %}
+                        <table class="table table-borderless">
+                            <tbody>
+                                <!-- Campo de Username -->
+
+                               <!--  {{ form.as_p }}-->
+                                <tr>
+                                    <td>
+                                        <label >Username:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.username }}
+                                        {% if form.username.errors %}
+                                            <!-- Muestra errores si los hay -->
+                                            <ul class="error-list">
+                                                {% for error in form.username.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                    
+                                <!-- Campo de Email -->
+                                <tr>
+                                    <td>
+                                        <label >Email:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.email }}
+                                        {% if form.email.errors %}
+                                            <!-- Muestra errores si los hay -->
+                                            <ul class="error-list">
+                                                {% for error in form.email.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                    
+                                <!-- Campo de Password -->
+                                <tr>
+                                    <td>
+                                        <label >Password:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.password1 }}
+                                        {% if form.password1.errors %}
+                                            <!-- Muestra errores si los hay -->
+                                            <ul class="error-list">
+                                                {% for error in form.password1.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                    
+                                <!-- Campo de Repetir Password -->
+                                <tr>
+                                    <td>
+                                        <label >Repetir Password:</label>
+                                    </td>
+                                    <td>
+                                        {{ form.password2 }}
+                                        {% if form.password2.errors %}
+                                            <!-- Muestra errores si los hay -->
+                                            <ul class="error-list">
+                                                {% for error in form.password2.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                    
+                                <!-- Botón de Registrarse -->
+                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+</body>
+
+ 
+ 
+{% endblock %}
